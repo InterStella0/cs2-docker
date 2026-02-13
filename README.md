@@ -34,12 +34,12 @@ docker compose up -d
 
 ### Generic Linux (GPU)
 ```bash
-docker compose -f compose.yml -f compose.linux-gpu.yml up -d
+docker compose -f compose.yaml -f compose.linux-gpu.yaml up -d
 ```
 
 ### WSL (GPU)
 ```bash
-docker compose -f -compose.yml -f compose.wsl.yml up -d
+docker compose -f -compose.yaml -f compose.wsl.yaml up -d
 ```
 
 ## Admin Management
