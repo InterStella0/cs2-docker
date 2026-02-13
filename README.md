@@ -46,7 +46,7 @@ docker compose -f -compose.yaml -f compose.wsl.yaml up -d
 
 Add an admin by Steam64 ID:
 ```bash
-docker exec cs2-docker cs2fixes-add-admin.sh  z
+docker exec cs2-docker cs2fixes-add-admin.sh <uint steamID64 here> z
 ```
 
 Flags: `z` = root/all permissions, `oy` = generic admin + chat (default)
