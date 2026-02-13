@@ -27,37 +27,39 @@ docker buildx build $PWD --tag cs2-docker
 you can pass `--arg LOGIN='username password'` to download the workshop tools (the free DLC requires a account)
 
 ## Run
+### No GPU
 ```bash
 docker compose up -d
 ```
 
+### Generic Linux (GPU)
 ```bash
-docker exec cs2-docker cs2fixes-add-admin.sh <uint steamID64 here> z
+docker compose -f docker-compose.yml -f docker-compose.linux-gpu.yml up -d
 ```
 
-Generic linux, might need to pass xauth and gpu specific varaibles
-```
---gpus all \
--v /tmp/.X11-unix/:/tmp/.X11-unix/ \
--e DISPLAY=$DISPLAY
+### WSL (GPU)
+```bash
+docker compose -f docker-compose.yml -f docker-compose.wsl.yml up -d
 ```
 
-WSL drivers
-```
---gpus all \
--v /usr/lib/wsl:/usr/lib/wsl:ro \
---device /dev/dxg \
--e LD_LIBRARY_PATH=/usr/lib/wsl/lib \
--e MESA_D3D12_DEFAULT_ADAPTER_NAME="NVIDIA" \
--e EGL_PLATFORM=surfaceless \
--e MESA_LOADER_DRIVER_OVERRIDE=d3d12 \
--e GALLIUM_DRIVER=d3d12 \
--e DISPLAY=$DISPLAY
+## Admin Management
+
+Add an admin by Steam64 ID:
+```bash
+docker exec cs2-docker cs2fixes-add-admin.sh  z
 ```
 
-Use `--rm` if you don't want to save workshop, demos, and shaders
+Flags: `z` = root/all permissions, `oy` = generic admin + chat (default)
 
 Installation for [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
+
+## Game Connect Example
+```
+ipv4:   connect 255.255.255.255
+P2P/SDR: connect "[A:1:0 (steam64):0 (vport)]"
+```
+
+You can get the P2P/steam3ID of the server by running `status_json` in the server console
 
 # Misc
 ## Workshop Tools, Disable 2-auth
