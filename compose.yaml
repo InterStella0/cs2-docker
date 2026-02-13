@@ -1,0 +1,17 @@
+services:
+  cs2-docker:
+    image: cs2-docker
+    container_name: cs2-docker
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./replays:/replays
+      - ./steamapps:/steamapps
+    ports:
+      - "8080:8080"
+      - "5900:5900"
+      - "27015:27015"
+      - "27020:27020"
+      - "27015:27015/udp"
+      - "27020:27020/udp"
+    command: -dedicated +map de_dust2 -steam
