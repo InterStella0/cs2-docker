@@ -5,9 +5,17 @@ Targeted for Source2ZE
 This is a docker build script for the steamrt container that allows for
 running the client without steam and the server with/without steam.
 
-**Credit: Von on Discord GFL (He wrote the entire setup)**
+**Credit: Von on Discord GFL (He wrote the entire setup and instructions i'm just uploading it)**
 
-# Build
+# Map List
+Edit the maplist to include your target maps
+```
+artifacts/addons/cs2fixes/configs/maplist.jsonc.example
+```
+You can edit other files before buildtime to avoid a lengthy recompile, takes 30 minutes to build goldberg and download the game (cpu  + network)
+
+# Usage
+## Build
 ```bash
 podman build $PWD --tag cs2-docker
 ```
@@ -18,9 +26,7 @@ docker buildx build $PWD --tag cs2-docker
 
 you can pass `--arg LOGIN='username password'` to download the workshop tools (the free DLC requires a account)
 
-# Usage
-
-Example:
+## Run
 ```bash
 docker compose up -d
 ```
@@ -53,7 +59,6 @@ Use `--rm` if you don't want to save workshop, demos, and shaders
 
 Installation for [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
 
------
 # Misc
 ## Workshop Tools, Disable 2-auth
 https://store.steampowered.com/twofactor/manage
