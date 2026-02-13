@@ -22,6 +22,10 @@ you can pass `--arg LOGIN='username password'` to download the workshop tools (t
 
 Example:
 ```bash
+docker compose up -d
+```
+
+```bash
 docker run --rm -it -v ./replays:/replays -v ./steamapps/:/steamapps/ -p 8080:8080 -p 5900:5900 -p 27015:27015 -p 27020:27020 -p 27015:27015/udp -p 27020:27020/udp --name cs2-docker cs2-docker -dedicated +map de_dust2 -steam
 ```
 
