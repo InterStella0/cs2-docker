@@ -1,0 +1,20 @@
+services:
+  cs2-docker:
+    volumes:
+      - /usr/lib/wsl:/usr/lib/wsl:ro
+    devices:
+      - /dev/dxg
+    environment:
+      - LD_LIBRARY_PATH=/usr/lib/wsl/lib
+      - MESA_D3D12_DEFAULT_ADAPTER_NAME=NVIDIA
+      - EGL_PLATFORM=surfaceless
+      - MESA_LOADER_DRIVER_OVERRIDE=d3d12
+      - GALLIUM_DRIVER=d3d12
+      - DISPLAY=${DISPLAY}
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
